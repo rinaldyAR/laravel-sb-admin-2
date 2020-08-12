@@ -7,8 +7,7 @@
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">{{ __('Verify Your Email Address') }}</h1>
@@ -21,7 +20,10 @@
                                 @endif
 
                                 {{ __('Before proceeding, please check your email for a verification link.') }}
-                                {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+                                {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}" onclick="event.preventDefault(); document.getElementById('resend').submit();">{{ __('click here to request another') }}</a>.
+                                <form id="resend" action="{{ route('verification.resend') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </div>
